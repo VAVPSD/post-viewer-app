@@ -1,0 +1,16 @@
+.light, .dark {
+  position: fixed;
+  inset: 0;
+}
+
+.light {
+  background-color: #f2f2f3;;
+  color: #0d0b6e;
+  min-height: 100vh;
+}
+
+.dark {
+  background-color: #7675a3;
+  color: #f2f2f3;
+  min-height: 100vh;
+}
