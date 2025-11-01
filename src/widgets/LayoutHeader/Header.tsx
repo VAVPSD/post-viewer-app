@@ -1,7 +1,9 @@
 const Header = () => {
-  return <header>
+  return (
+  <header>
     <h1>PostViewer</h1>
-  </header>;
+  </header>
+  )
 };
 
 export default Header;
