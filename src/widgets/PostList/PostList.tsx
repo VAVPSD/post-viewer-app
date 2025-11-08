@@ -3,11 +3,11 @@ import { mockPosts } from '../../mock/posts';
 
 const PostList = () => {
   return (
-    <div>
+    <>
       {mockPosts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}
-    </div>
+    </>
   );
 };
 
