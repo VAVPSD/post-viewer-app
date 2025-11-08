@@ -1,14 +1,22 @@
 import PostCard from '../../entities/post/ui/PostCard';
-import { mockPosts } from '../../mock/posts';
+import { type PostsDto } from '../../mock/posts';
+import { withLoading } from '../../shared/lib/hoc/withLoading';
 
-const PostList = () => {
+interface Props {
+  posts: PostsDto[];
+}
+
+const PostList = ({posts}: Props) => {
+
   return (
     <>
-      {mockPosts.map((post) => (
+      {posts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}
     </>
   );
 };
 
-export default PostList;
+const PostListWithLoading = withLoading(PostList);
+
+export default PostListWithLoading;
