@@ -1,9 +1,9 @@
 import PostCard from '../../entities/post/ui/PostCard';
-import { type PostsDto } from '../../mock/posts';
+import { type PostDto } from '../../mock/posts';
 import { withLoading } from '../../shared/lib/hoc/withLoading';
 
 interface Props {
-  posts: PostsDto[];
+  posts: PostDto[];
 }
 
 const PostList = ({posts}: Props) => {

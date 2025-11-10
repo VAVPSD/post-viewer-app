@@ -1,11 +1,11 @@
-import type { PostsDto } from "../../../mock/posts";
+import type { PostDto } from "../../../mock/posts";
 import { MEDIUM_MAX, SHORT_MAX } from "../model/consts";
 import type { LengthFilterType } from "../model/types";
 
 export const filterByLength = (
-    posts: PostsDto[],
+    posts: PostDto[],
     filter: LengthFilterType
-): PostsDto[] => {
+): PostDto[] => {
     switch (filter) {
         case 'short':
             return posts.filter((post) => post.title.length < SHORT_MAX);

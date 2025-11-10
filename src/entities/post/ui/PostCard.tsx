@@ -1,15 +1,16 @@
 import { mockComments } from '../../../mock/comments';
-import type { PostsDto } from '../../../mock/posts';
+import type { PostDto } from '../../../mock/posts';
 import CommentList from '../../../widgets/CommentList/ui/CommentList';
 
 interface Props {
-  post: PostsDto;
+  post: PostDto;
 }
 
 const PostCard = ({ post }: Props) => {
   return (
     <div>
       <h3>{post.title}</h3>
+      <p>{post.text}</p>
         <CommentList comments={mockComments}/>
     </div>
   );
