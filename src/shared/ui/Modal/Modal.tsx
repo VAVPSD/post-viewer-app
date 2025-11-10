@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import styles from './Modal.module.css';
 import { usePortal } from '../../lib/hooks/usePortal';
+import { ModalBody } from './ModalBody';
+import { ModalFooter } from './ModalFooter';
+import { ModalHeader } from './ModalHeader';
 
 interface Props {
   isOpen: boolean;
@@ -42,3 +45,7 @@ export const Modal = ({ isOpen, onClose, children }: Props) => {
     </Portal>
   );
 };
+
+Modal.Header = ModalHeader;
+Modal.Body = ModalBody;
+Modal.Footer = ModalFooter;

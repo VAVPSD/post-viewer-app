@@ -27,3 +27,20 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+.header {
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.body {
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
