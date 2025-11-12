@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ThemeSwitcher } from "../../features/ThemeSwitcher/ui/ThemeSwitcher";
 import { Button } from "../../shared/ui/Button/Button";
 import { Modal } from "../../shared/ui/Modal/Modal";
+import UserTabs from "../UserTabs/ui/UserTabs";
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,6 +12,7 @@ const Header = () => {
       <h1>PostViewer</h1>
       <ThemeSwitcher />
       <Button onClick={() => setIsModalOpen(true)}>О проекте</Button>
+      <UserTabs />
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <Modal.Header><h1>О проекте</h1></Modal.Header>
