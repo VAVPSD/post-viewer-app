@@ -1,0 +1,25 @@
+.tabs {
+  margin-bottom: 16px;
+}
+
+.list {
+  display: flex;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--tabs-fg, #444444);
+  background: var(--tabs-bg, #f2f2f2);
+}
+
+.active {
+  color: var(--tabs-active-fg, #ffffff);
+  background: var(--tabs-active-bg, #065847);
+}
