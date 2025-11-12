@@ -3,19 +3,27 @@ import { filterByLength } from "../../../features/PostLengthFilter/lib/filterByL
 import { LengthFilter } from "../../../features/PostLengthFilter/model/consts";
 import type { LengthFilterType } from "../../../features/PostLengthFilter/model/types";
 import PostLengthFilter from "../../../features/PostLengthFilter/ui/PostLengthFilter";
-import { mockPosts } from "../../../mock/posts";
+import { usePosts } from "../../../features/PostList/model/hooks/usePosts";
 import PostList from "../../../widgets/PostList/PostList";
 
 export const PostsPage = () => {
+  const { posts, isLoading, error } = usePosts();
   const [lengthFilter, setLengthFilter] = useState<LengthFilterType>(LengthFilter.All);
 
-  const filteredPosts = filterByLength(mockPosts, lengthFilter);
-  const loading = false;
+  const filteredPosts = filterByLength(posts, lengthFilter);
+
+  if (error) {
+    return (
+      <section>
+        <p>Не удалось загрузить посты: {error}</p>
+      </section>
+    );
+  }
 
   return (
     <section>
       <PostLengthFilter value={lengthFilter} onChange={setLengthFilter} />
-      <PostList isLoading={loading} posts={filteredPosts} />
+      <PostList isLoading={isLoading} posts={filteredPosts} />
     </section>
   );
 };
