@@ -1,15 +1,9 @@
 import { jsonPlaceholderApi } from '../../../shared/api/jsonplaceholder';
-
-export interface JsonPlaceholderPost {
-  id: number;
-  userId: number;
-  title: string;
-  body: string;
-}
+import type { Post } from '../model/types';
 
 export const postsApi = jsonPlaceholderApi.injectEndpoints({
   endpoints: (build) => ({
-    getPosts: build.query<JsonPlaceholderPost[], void>({
+    getPosts: build.query<Post[], void>({
       query: () => '/posts',
       providesTags: (result) =>
         result
@@ -20,12 +14,12 @@ export const postsApi = jsonPlaceholderApi.injectEndpoints({
           : [{ type: 'Post', id: 'LIST' }],
     }),
 
-    getPostById: build.query<JsonPlaceholderPost, number>({
+    getPostById: build.query<Post, number>({
       query: (id: number) => `/posts/${id}`,
       providesTags: (_result, _error, id) => [{ type: 'Post', id }],
     }),
 
-    getPostsByUserId: build.query<JsonPlaceholderPost[], number>({
+    getPostsByUserId: build.query<Post[], number>({
       query: (userId: number) => `/users/${userId}/posts`,
       providesTags: (result, _error, userId) =>
         result

@@ -10,7 +10,7 @@ const MainLayout = () => {
   return (
     <div className={theme === 'light' ? styles.light : styles.dark}>
       <Header />
-      <main>
+      <main className={styles.main}>
         <Outlet />  
       </main>
       <Footer />

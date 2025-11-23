@@ -1,14 +1,9 @@
 import { jsonPlaceholderApi } from '../../../shared/api/jsonplaceholder';
-
-export interface JsonPlaceholderAlbum {
-  id: number;
-  userId: number;
-  title: string;
-}
+import type { Album } from '../model/types';
 
 export const albumsApi = jsonPlaceholderApi.injectEndpoints({
   endpoints: (build) => ({
-    getAlbumsByUser: build.query<JsonPlaceholderAlbum[], number>({
+    getAlbumsByUser: build.query<Album[], number>({
       query: (userId: number) => `/users/${userId}/albums`,
       providesTags: (result, _error, userId) =>
         result

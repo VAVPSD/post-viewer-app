@@ -1,9 +1,9 @@
 import { jsonPlaceholderApi } from '../../../shared/api/jsonplaceholder';
-import type { UserDto } from '../model/types';
+import type { User } from '../model/types';
 
 export const usersApi = jsonPlaceholderApi.injectEndpoints({
   endpoints: (build) => ({
-    getUsers: build.query<UserDto[], void>({
+    getUsers: build.query<User[], void>({
       query: () => '/users',
       providesTags: (result) =>
         result
@@ -14,7 +14,7 @@ export const usersApi = jsonPlaceholderApi.injectEndpoints({
           : [{ type: 'User', id: 'LIST' }],
     }),
 
-    getUserById: build.query<UserDto, number>({
+    getUserById: build.query<User, number>({
       query: (id: number) => `/users/${id}`,
       providesTags: (_result, _error, id) => [{ type: 'User', id }],
     }),
