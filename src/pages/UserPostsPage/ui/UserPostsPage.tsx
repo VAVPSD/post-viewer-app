@@ -4,6 +4,7 @@ import { useGetPostsByUserIdQuery } from '../../../entities/post/api/postsApi';
 import { useGetUserByIdQuery } from '../../../entities/user/api/usersApi';
 import PostCard from '../../../entities/post/ui/PostCard';
 import type { PostDto, Post } from '../../../entities/post/model/types';
+import styles from './UserPostsPage.module.css';
 
 const adaptPost = (post: Post): PostDto => ({
   id: post.id,
@@ -28,35 +29,44 @@ export const UserPostsPage = () => {
 
   if (userError || postsError) {
     return (
-      <section>
+      <section className={styles.container}>
         <p>Не удалось загрузить данные</p>
       </section>
     );
   }
 
   if (isUserLoading || isPostsLoading) {
-    return <p>Загружаем данные...</p>;
+    return (
+      <section className={styles.container}>
+        <p>Загружаем данные...</p>
+      </section>
+    );
   }
 
   if (!user) {
-    return <p>Пользователь не найден</p>;
+    return (
+      <section className={styles.container}>
+        <p>Пользователь не найден</p>
+      </section>
+    );
   }
 
   return (
-    <section>
-      <h2>Посты пользователя: {user.name}</h2>
+    <section className={styles.container}>
+      <h2 className={styles.title}>Посты пользователя: {user.name}</h2>
       {adaptedPosts && adaptedPosts.length === 0 ? (
         <p>У пользователя нет постов</p>
       ) : (
-        <div>
+        <ul className={styles.postsList}>
           {adaptedPosts.map((post) => (
-            <PostCard
-              key={post.id}
-              post={post}
-              onClick={() => {}}
-            />
+            <li key={post.id} className={styles.postItem}>
+              <PostCard
+                post={post}
+                onClick={() => {}}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </section>
   );

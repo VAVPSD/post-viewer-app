@@ -6,6 +6,7 @@ import PostLengthFilter from "../../../features/PostLengthFilter/ui/PostLengthFi
 import PostList from "../../../widgets/PostList/PostList";
 import { useGetPostsQuery } from "../../../entities/post/api/postsApi";
 import type { PostDto, Post } from "../../../entities/post/model/types";
+import styles from "./PostsPage.module.css";
 
 const adaptPost = (post: Post): PostDto => ({
   id: post.id,
@@ -27,14 +28,14 @@ export const PostsPage = () => {
 
   if (error) {
     return (
-      <section>
+      <section className={styles.container}>
         <p>Не удалось загрузить посты</p>
       </section>
     );
   }
 
   return (
-    <section>
+    <section className={styles.container}>
       <PostLengthFilter value={lengthFilter} onChange={setLengthFilter} />
       <PostList isLoading={isLoading} posts={filteredPosts} />
     </section>
