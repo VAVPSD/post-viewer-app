@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, type MouseEventHandler } from 'react';
 import { useGetCommentsByPostQuery } from '../../../entities/comment/api/commentsApi';
 
 interface Props {
@@ -6,13 +6,13 @@ interface Props {
 }
 
 const CommentList = ({ postId }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { data: comments, isLoading } = useGetCommentsByPostQuery(postId, {
     skip: !isOpen,
   });
 
-  const toggle = useCallback(() => {
+  const toggle: MouseEventHandler<HTMLButtonElement> = useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);
 

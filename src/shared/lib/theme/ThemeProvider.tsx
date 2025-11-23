@@ -1,12 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState, type PropsWithChildren } from 'react';
 import { ThemeContext } from './ThemeContext';
 import type { Theme, ThemeContextValue } from './types';
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export const ThemeProvider = ({ children }: Props) => {
+export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [theme, setTheme] = useState<Theme>('light');
 
   const themeContextValue: ThemeContextValue = useMemo(

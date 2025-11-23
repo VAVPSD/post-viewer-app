@@ -1,15 +1,9 @@
 import { jsonPlaceholderApi } from '../../../shared/api/jsonplaceholder';
-
-export interface JsonPlaceholderTodo {
-  id: number;
-  userId: number;
-  title: string;
-  completed: boolean;
-}
+import type { Todo } from '../model/types';
 
 export const todosApi = jsonPlaceholderApi.injectEndpoints({
   endpoints: (build) => ({
-    getTodosByUser: build.query<JsonPlaceholderTodo[], number>({
+    getTodosByUser: build.query<Todo[], number>({
       query: (userId: number) => `/users/${userId}/todos`,
       providesTags: (result, _error, userId) =>
         result

@@ -1,21 +1,20 @@
-import React, { useEffect } from 'react';
+import { useEffect, type PropsWithChildren, type MouseEventHandler } from 'react';
 import styles from './Modal.module.css';
 import { usePortal } from '../../lib/hooks/usePortal';
 import { ModalBody } from './ModalBody';
 import { ModalFooter } from './ModalFooter';
 import { ModalHeader } from './ModalHeader';
 
-interface Props {
+interface Props extends PropsWithChildren {
   isOpen: boolean;
   onClose: () => void;
-  children: React.ReactNode;
-};
+}
 
 export const Modal = ({ isOpen, onClose, children }: Props) => {
   const Portal = usePortal('modal-root');
 
   useEffect(() => {
-    const handleEsc = (evt: KeyboardEvent) => {
+    const handleEsc = (evt: KeyboardEvent): void => {
       if (evt.key === 'Escape') onClose();
     };
 
@@ -32,11 +31,23 @@ export const Modal = ({ isOpen, onClose, children }: Props) => {
 
   if (!isOpen) return null;
 
+  const handleOverlayClick: MouseEventHandler<HTMLDivElement> = () => {
+    onClose();
+  };
+
+  const handleContentClick: MouseEventHandler<HTMLDivElement> = (evt) => {
+    evt.stopPropagation();
+  };
+
+  const handleCloseClick: MouseEventHandler<HTMLButtonElement> = () => {
+    onClose();
+  };
+
   return (
     <Portal>
-      <div className={styles.overlay} onClick={onClose}>
-        <div className={styles.content} onClick={(evt) => evt.stopPropagation()}>
-          <button className={styles.close} onClick={onClose}>
+      <div className={styles.overlay} onClick={handleOverlayClick}>
+        <div className={styles.content} onClick={handleContentClick}>
+          <button className={styles.close} onClick={handleCloseClick}>
             ✕
           </button>
           {children}

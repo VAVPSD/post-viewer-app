@@ -1,18 +1,18 @@
 import { useParams } from 'react-router-dom';
 import { useMemo } from 'react';
-import { useGetPostsByUserIdQuery, type JsonPlaceholderPost } from '../../../entities/post/api/postsApi';
+import { useGetPostsByUserIdQuery } from '../../../entities/post/api/postsApi';
 import { useGetUserByIdQuery } from '../../../entities/user/api/usersApi';
 import PostCard from '../../../entities/post/ui/PostCard';
-import type { PostDto } from '../../../entities/post/model/types';
+import type { PostDto, Post } from '../../../entities/post/model/types';
 
-const adaptPost = (post: JsonPlaceholderPost): PostDto => ({
+const adaptPost = (post: Post): PostDto => ({
   id: post.id,
   title: post.title,
   text: post.body,
 });
 
 export const UserPostsPage = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const userId = Number(id);
 
   const { data: user, isLoading: isUserLoading, error: userError } =

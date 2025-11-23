@@ -8,8 +8,7 @@ interface Props {
 }
 
 const PostList = ({ posts }: Props) => {
-
-  const handleClick = useCallback((id: number) => {
+  const handleClick = useCallback((id: number): void => {
     console.log(`Пост ${id}`);
   }, []);
 

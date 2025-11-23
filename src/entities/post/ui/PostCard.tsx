@@ -1,9 +1,10 @@
+import { type MouseEventHandler } from 'react';
 import type { PostDto } from '../model/types';
 import CommentList from '../../../widgets/CommentList/ui/CommentList';
 
 interface Props {
   post: PostDto;
-  onClick: () => void;
+  onClick: MouseEventHandler<HTMLDivElement>;
 }
 
 const PostCard = ({ post, onClick }: Props) => {
