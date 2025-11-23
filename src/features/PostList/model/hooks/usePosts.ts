@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { PostDto } from '../../../../mock/posts';
+import type { PostDto } from '../../../../entities/post/model/types';
 
 export function usePosts() {
     const [posts, setPosts] = useState<PostDto[]>([]);
