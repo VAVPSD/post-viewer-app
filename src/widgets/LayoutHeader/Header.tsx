@@ -5,7 +5,7 @@ import { Modal } from "../../shared/ui/Modal/Modal";
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   return (
     <header>
       <h1>PostViewer</h1>
@@ -13,10 +13,9 @@ const Header = () => {
       <Button onClick={() => setIsModalOpen(true)}>О проекте</Button>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2>О проекте</h2>
-        <p>
-          Это учебное приложение для просмотра постов.
-        </p>
+        <Modal.Header><h1>О проекте</h1></Modal.Header>
+        <Modal.Body><p>Это учебное приложение для просмотра постов.</p></Modal.Body>
+        <Modal.Footer><p>Контакты</p></Modal.Footer>
       </Modal>
     </header>
   )
