@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import PostCard from '../../entities/post/ui/PostCard';
-import { type PostDto } from '../../mock/posts';
+import { type PostDto } from '../../entities/post/model/types';
 import { withLoading } from '../../shared/lib/hoc/withLoading';
 
 interface Props {

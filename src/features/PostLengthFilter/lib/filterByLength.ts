@@ -1,4 +1,4 @@
-import type { PostDto } from "../../../mock/posts";
+import type { PostDto } from "../../../entities/post/model/types";
 import { MEDIUM_MAX, SHORT_MAX } from "../model/consts";
 import type { LengthFilterType } from "../model/types";
 

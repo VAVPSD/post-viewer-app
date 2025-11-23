@@ -1,12 +1,16 @@
 import { useState, useCallback } from 'react';
-import type { CommentDto } from '../../../mock/comments';
+import { useGetCommentsByPostQuery } from '../../../entities/comment/api/commentsApi';
 
 interface Props {
-  comments: CommentDto[];
+  postId: number;
 }
 
-const CommentList = ({ comments }: Props) => {
+const CommentList = ({ postId }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { data: comments, isLoading } = useGetCommentsByPostQuery(postId, {
+    skip: !isOpen,
+  });
 
   const toggle = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -19,11 +23,21 @@ const CommentList = ({ comments }: Props) => {
       </button>
 
       {isOpen && (
-        <ul>
-          {comments.map((comment) => (
-            <li key={comment.id}>{comment.text}</li>
-          ))}
-        </ul>
+        <div>
+          {isLoading && <p>Загружаем комментарии...</p>}
+          {!isLoading && comments && comments.length === 0 && (
+            <p>Комментариев нет</p>
+          )}
+          {!isLoading && comments && comments.length > 0 && (
+            <ul>
+              {comments.map((comment) => (
+                <li key={comment.id}>
+                  <strong>{comment.email}</strong>: {comment.body}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
     </div>
   );
