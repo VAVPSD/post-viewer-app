@@ -1,5 +1,4 @@
-import { mockComments } from '../../../mock/comments';
-import type { PostDto } from '../../../mock/posts';
+import type { PostDto } from '../model/types';
 import CommentList from '../../../widgets/CommentList/ui/CommentList';
 
 interface Props {
@@ -12,7 +11,7 @@ const PostCard = ({ post, onClick }: Props) => {
     <div onClick={onClick}>
       <h3>{post.title}</h3>
       <p>{post.text}</p>
-        <CommentList comments={mockComments}/>
+      <CommentList postId={post.id} />
     </div>
   );
 };
