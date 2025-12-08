@@ -1,0 +1,23 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  margin: 0 0 24px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.postsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.postItem {
+  margin-bottom: 0;
+}
+

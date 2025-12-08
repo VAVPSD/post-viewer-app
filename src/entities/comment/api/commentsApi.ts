@@ -1,16 +1,9 @@
 import { jsonPlaceholderApi } from '../../../shared/api/jsonplaceholder';
-
-export interface JsonPlaceholderComment {
-  id: number;
-  postId: number;
-  name: string;
-  email: string;
-  body: string;
-}
+import type { Comment } from '../model/types';
 
 export const commentsApi = jsonPlaceholderApi.injectEndpoints({
   endpoints: (build) => ({
-    getCommentsByPost: build.query<JsonPlaceholderComment[], number>({
+    getCommentsByPost: build.query<Comment[], number>({
       query: (postId: number) => `/posts/${postId}/comments`,
       providesTags: (result, _error, postId) =>
         result
